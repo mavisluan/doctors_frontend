@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { Container, Row, Col } from 'react-bootstrap';
+import Main from './components/Main';
+import { doctors } from './seed';
+import Sidebar from './components/Sidebar';
 
-function App() {
+const App = () => {
+  const [doctorID, setDoctorID] = useState(0);
+  const currentDoc = doctors.find(doc => doc.id === doctorID);
+  console.log('doct', currentDoc);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container className="p-3">
+      <Row>
+        <Col lg={4}>
+          <Sidebar doctors={doctors} setDoctorID={setDoctorID} />
+        </Col>
+        <Col lg={8}>
+          <Main doctor={currentDoc} />
+        </Col>
+      </Row>
+    </Container>
   );
-}
+};
 
 export default App;
