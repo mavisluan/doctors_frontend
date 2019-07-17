@@ -17,7 +17,7 @@
 - yarn install
 - yarn server
 
-  2.App
+2.App
 
 - git clone `https://github.com/mavisluan/doctors_frontend.git`
 - cd doctors_frontend
